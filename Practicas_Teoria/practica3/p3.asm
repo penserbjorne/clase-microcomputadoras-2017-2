@@ -22,14 +22,17 @@
     ; WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ;
 
+    ; p3.asm
+    ; compilado con MPLAB8
+
     processor 16f877a
     include <p16f877a.inc>
 
 str     EQU 0x20; direccion del registro a mostrar
-off     EQU 0x21;
-toogle  EQU 0x22;
-temp    EQU 0x7b;
-index0  EQU 0x7c; contador
+off     EQU 0x21; indica si debemos apagar los leds
+toogle  EQU 0x22; indica si debemos parpadear los leds
+temp    EQU 0x7b; temporal, usada en varias partes del codigo
+index0  EQU 0x7c; contadores
 index1  EQU 0x7d;
 index2  EQU 0x7e;
 index3  EQU 0x7f;
@@ -58,8 +61,8 @@ setup:
     movwf   index1      ; retraso asinado por el profe (3 segundos)
     movlw   0xfe        ; cadena inicial
     movwf   str         ; la guardamos en el registro
-    clrf    off         ; indica si hay que apagar los displays, off = false
-    clrf    toogle      ; indica si hay que parpadear los displays, toogle=false
+    clrf    off         ; off = false
+    clrf    toogle      ; toogle=false
 
 inicio:
     movlw   0x09
