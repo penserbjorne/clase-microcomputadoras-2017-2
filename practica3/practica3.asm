@@ -137,7 +137,7 @@ loop:
 
 
     btfsc   toogle, 0   ; si no estamos parpadeando ignora la siguiente instrucion
-    decfsz  conta       ; si parpadeamos decrementa contador y si no es cero..
+    decfsz  index1      ; si parpadeamos decrementa contador y si no es cero..
     goto    main        ; regresamos a checar el boton
     movlw   0x0f        ; .. si es cero, reinicia el retraso largo
     movwf   index1      ; reinicia el retraso
